@@ -1,4 +1,4 @@
-import { IconSymbol } from '@/components/ui/IconSymbol';
+import { IconSymbol } from '@/components/IconSymbol';
 import { Tabs } from 'expo-router';
 
 const TabLayout = () => {
