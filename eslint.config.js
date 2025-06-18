@@ -28,6 +28,8 @@ module.exports = defineConfig([
 			'space-before-blocks': ['error', 'always'],
 			semi: ['error', 'always'],
 			'semi-spacing': ['error', { before: false, after: true }],
+			'space-infix-ops': ['error'],
+			'object-curly-spacing': ['error', 'always'],
 		},
 	},
 ]);
