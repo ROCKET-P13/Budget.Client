@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 
-export type Category = {
+export type BudgetCategory = {
 	id: string;
 	name: string;
 	isDebt: boolean;
@@ -14,7 +14,7 @@ export type Budget = {
 	id?: string;
 	name?: string;
 	totalPlannedAmount?: number;
-	categories?: Category[]
+	categories?: BudgetCategory[]
 }
 
 const Home = () => {

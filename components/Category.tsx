@@ -1,7 +1,7 @@
-import { Category } from '@/app/(tabs)';
+import { BudgetCategory } from '@/app/(tabs)';
 import { StyleSheet, Text, View } from 'react-native';
 
-const Category = ({ id, name, isDebt, plannedAmount, spentAmount }: Category) => {
+const Category = ({ id, name, isDebt, plannedAmount, spentAmount }: BudgetCategory) => {
 	
 	return (
 		<View id={id} style={styles.budgetBox}>
