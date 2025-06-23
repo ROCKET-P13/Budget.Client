@@ -5,7 +5,7 @@ import { Auth0Provider } from 'react-native-auth0';
 import config from '../auth0-configuration';
 
 import { AuthProvider, useAuthState } from './auth/AuthContext';
-import Home from './Views/Home';
+import TabNavigator from './navigation/TabNavigator';
 import Login from './Views/Login';
 
 const Stack = createNativeStackNavigator();
@@ -13,13 +13,13 @@ const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
 	const { isAuthenticated } = useAuthState();
 
-	if (isAuthenticated === null) return null; // Optional loading screen
+	if (isAuthenticated === null) return null;
 
 	return (
 		<NavigationContainer>
-			<Stack.Navigator>
+			<Stack.Navigator screenOptions={{ headerShown: false }}>
 				{isAuthenticated ? (
-					<Stack.Screen name="Home" component={Home} />
+					<Stack.Screen name="Main" component={TabNavigator} />
 				) : (
 					<Stack.Screen name="Login" component={Login} />
 				)}

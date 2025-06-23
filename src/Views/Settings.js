@@ -2,13 +2,14 @@ import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { useAuthState } from '../auth/AuthContext';
 
-const Login = () => {
-	const { login } = useAuthState();
+const Settings = () => {
+	const { logout } = useAuthState();
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.text}>Login</Text>
-			<Button title="Log In" onPress={login} />
+			<Text style={styles.text}>Settings</Text>
+			<Button title="Log Out!" onPress={logout} />
+
 		</View>
 	);
 };
@@ -16,8 +17,8 @@ const Login = () => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		justifyContent: 'center',  // vertically center
-		alignItems: 'center',      // horizontally center
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 	text: {
 		fontSize: 24,
@@ -25,4 +26,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default Login;
+export default Settings;
