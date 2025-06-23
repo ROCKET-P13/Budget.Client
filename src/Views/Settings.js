@@ -9,7 +9,6 @@ const Settings = () => {
 		<View style={styles.container}>
 			<Text style={styles.text}>Settings</Text>
 			<Button title="Log Out!" onPress={logout} />
-
 		</View>
 	);
 };
