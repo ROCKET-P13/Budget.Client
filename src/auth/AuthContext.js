@@ -27,18 +27,17 @@ export const AuthProvider = ({ children }) => {
 		}
 	};
 
-	const checkAuth = async () => {
-		try {
-			const creds = await getCredentials();
-			setIsAuthenticated(!!creds?.accessToken);
-		} catch {
-			setIsAuthenticated(false);
-		}
-	};
-
 	useEffect(() => {
+		const checkAuth = async () => {
+			try {
+				const creds = await getCredentials();
+				setIsAuthenticated(!!creds?.accessToken);
+			} catch {
+				setIsAuthenticated(false);
+			}
+		};
 		checkAuth();
-	}, []);
+	}, [getCredentials]);
 
 	return (
 		<AuthContext.Provider value={{ isAuthenticated, login, logout }}>
