@@ -1,14 +1,18 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useAuthState } from '../auth/AuthContext';
+import { colors } from '../theme';
 
 const Settings = () => {
 	const { logout } = useAuthState();
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.text}>Settings</Text>
-			<Button title="Log Out!" onPress={logout} />
+			<Text style={styles.header}>Settings</Text>
+
+			<TouchableOpacity style={styles.logoutButton} onPress={logout}>
+				<Text style={styles.logoutText}>Log Out</Text>
+			</TouchableOpacity>
 		</View>
 	);
 };
@@ -16,12 +20,33 @@ const Settings = () => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		justifyContent: 'center',
+		backgroundColor: colors.background,
+		paddingHorizontal: 20,
+		paddingTop: 60,
+	},
+	header: {
+		fontSize: 28,
+		fontWeight: 'bold',
+		color: colors.textPrimary,
+		marginBottom: 30,
+	},
+	settingText: {
+		fontSize: 16,
+		color: colors.textSecondary,
+	},
+	logoutButton: {
+		marginTop: 40,
+		marginRight: 40,
+		marginLeft: 40,
+		backgroundColor: colors.error,
+		paddingVertical: 12,
+		borderRadius: 8,
 		alignItems: 'center',
 	},
-	text: {
-		fontSize: 24,
-		marginBottom: 20,
+	logoutText: {
+		color: colors.background,
+		fontSize: 16,
+		fontWeight: 'bold',
 	},
 });
 

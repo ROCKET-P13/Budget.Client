@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { colors } from '../theme';
 
 const Home = () => {
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.text}>Home</Text>
+			<Text style={styles.header}>Home</Text>
 		</View>
 	);
 };
@@ -13,12 +14,15 @@ const Home = () => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
+		backgroundColor: colors.background,
+		paddingHorizontal: 20,
+		paddingTop: 60,
 	},
-	text: {
-		fontSize: 24,
-		marginBottom: 20,
+	header: {
+		fontSize: 28,
+		fontWeight: 'bold',
+		color: colors.textPrimary,
+		marginBottom: 30,
 	},
 });
 
