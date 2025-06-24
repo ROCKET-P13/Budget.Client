@@ -1,51 +1,70 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useAuthState } from '../auth/AuthContext';
-import { colors } from '../theme';
+import { Colors } from '../theme';
 
-const Login = () => {
+export default function LoginScreen () {
 	const { login } = useAuthState();
-
 	return (
 		<View style={styles.container}>
-			<Text style={styles.title}>Welcome Back</Text>
-			<Text style={styles.subtitle}>Login to manage your budget</Text>
-			<TouchableOpacity style={styles.loginButton} onPress={login}>
-				<Text style={styles.loginButtonText}>Log In</Text>
-			</TouchableOpacity>
+			<View style={styles.header}>
+				<View style={styles.iconContainer}>
+					<Image source={require('../../assets/images/logo.png')} style={styles.iconContainer} />
+				</View>
+				<Text style={styles.title}>Welcome to Penny!</Text>
+				<Text style={styles.subtitle}>As easy as a piggy bank</Text>
+			</View>
+
+			<View>
+				<TouchableOpacity style={styles.button} onPress={login}>
+					<Text style={styles.buttonText}>Login</Text>
+				</TouchableOpacity>
+			</View>
 		</View>
 	);
-};
+}
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: colors.background,
+		backgroundColor: Colors.background,
+		justifyContent: 'center',
+		paddingHorizontal: 24,
+	},
+	header: {
+		alignItems: 'center',
+		marginBottom: 40,
+	},
+	iconContainer: {
+		width: 150,
+		height: 150,
+		backgroundColor: Colors.primary,
+		borderRadius: 75,
+		marginBottom: 13,
 		justifyContent: 'center',
 		alignItems: 'center',
-		padding: 20,
 	},
 	title: {
-		fontSize: 28,
-		fontWeight: 'bold',
-		color: colors.textPrimary,
-		marginBottom: 10,
+		fontSize: 24,
+		color: Colors.textPrimary,
+		fontWeight: '600',
+		marginTop: 16,
 	},
 	subtitle: {
-		fontSize: 16,
-		color: colors.textSecondary,
-		marginBottom: 30,
+		fontSize: 14,
+		color: Colors.textSecondary,
 	},
-	loginButton: {
-		backgroundColor: colors.primary,
+	button: {
+		backgroundColor: Colors.primary,
+		borderRadius: 12,
 		paddingVertical: 12,
-		paddingHorizontal: 30,
-		borderRadius: 8,
+		alignItems: 'center',
+		marginBottom: 12,
+		marginHorizontal: 60,
 	},
-	loginButtonText: {
-		color: '#FFF',
+	buttonText: {
+		color: Colors.white,
 		fontSize: 16,
-		fontWeight: 'bold',
+		fontWeight: '600',
 	},
 });
-export default Login;

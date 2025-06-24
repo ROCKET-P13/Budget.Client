@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useAuthState } from '../auth/AuthContext';
-import { colors } from '../theme';
+import { Colors } from '../theme';
 
 const Settings = () => {
 	const { logout } = useAuthState();
@@ -9,10 +9,12 @@ const Settings = () => {
 	return (
 		<View style={styles.container}>
 			<Text style={styles.header}>Settings</Text>
-
-			<TouchableOpacity style={styles.logoutButton} onPress={logout}>
+			<Pressable style={({ pressed  }) => [
+				styles.logoutButton,
+				{ opacity: pressed ? 0.7 : 1 },
+			]} onPress={logout}>
 				<Text style={styles.logoutText}>Log Out</Text>
-			</TouchableOpacity>
+			</Pressable>
 		</View>
 	);
 };
@@ -20,31 +22,32 @@ const Settings = () => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: colors.background,
+		backgroundColor: Colors.white,
 		paddingHorizontal: 20,
 		paddingTop: 60,
 	},
 	header: {
 		fontSize: 28,
 		fontWeight: 'bold',
-		color: colors.textPrimary,
+		color: Colors.accentPink,
 		marginBottom: 30,
 	},
 	settingText: {
 		fontSize: 16,
-		color: colors.textSecondary,
+		color: Colors.textSecondary,
 	},
 	logoutButton: {
-		marginTop: 40,
-		marginRight: 40,
-		marginLeft: 40,
-		backgroundColor: colors.error,
+		backgroundColor: Colors.white,
+		borderColor: Colors.accentPink,
+		borderWidth: 2,
+		borderRadius: 12,
 		paddingVertical: 12,
-		borderRadius: 8,
 		alignItems: 'center',
+		marginBottom: 12,
+		marginHorizontal: 60,
 	},
 	logoutText: {
-		color: colors.background,
+		color: Colors.accentPink,
 		fontSize: 16,
 		fontWeight: 'bold',
 	},

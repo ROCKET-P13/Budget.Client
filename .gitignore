@@ -38,4 +38,4 @@ yarn-error.*
 
 app-example
 
-./auth0-configuration.js
+auth0-configuration.js

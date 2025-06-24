@@ -1,10 +1,11 @@
-export const colors = {
-	primary: '#2A9D8F',
-	primaryDark: '#1E7F76',
-	accent: '#E9C46A',
-	background: '#F4F4F4',
-	surface: '#FFFFFF',
-	textPrimary: '#264653',
-	textSecondary: '#6C757D',
-	error: '#E76F51',
-};
+export const Colors = Object.freeze({
+	background: '#F9EAE1',
+	primary: '#EFB8C8',       // Blush pink
+	textPrimary: '#1A1A40',   // Midnight blue
+	textSecondary: '#2D2D2D',
+	accentPink: '#FF92B2',
+	mutedGold: '#D4AF7F',        // Muted gold
+	border: '#C1C8CD',        // Cool gray
+	white: '#FFFFFF',
+	placeholder: '#A0A0A0',
+});
