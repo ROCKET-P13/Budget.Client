@@ -30,7 +30,6 @@ const mockBudgetData = {
 		{ id: 14, name: 'Renters Insurance', amount: 100, type: 'expense'  },
 		{ id: 15, name: 'Tundra', amount: 100, type: 'expense'  },
 		{ id: 16, name: 'Student Loans', amount: 100, type: 'expense' },
-
 	],
 };
 
@@ -77,7 +76,6 @@ const styles = StyleSheet.create({
 	},
 	month: {
 	  fontSize: 20,
-	  fontWeight: '600',
 	  color: Colors.textPrimary,
 	},
 	budgetLabel: {
