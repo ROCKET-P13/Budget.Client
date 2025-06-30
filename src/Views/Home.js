@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import CategoryList from '../components/CategoryList';
 import { Colors } from '../theme';
 
 const getMonthYear = () => {
@@ -42,29 +44,25 @@ const Home = () => {
 	const incomeCategories = budget?.categories.filter((cat) => cat.type === 'income') || [];
 	const expenseCategories = budget?.categories.filter((cat) => cat.type === 'expense') || [];
 	return (
-		<View style={styles.container}>
-			<Text style={styles.header}>{getMonthYear()}</Text>
-			<ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
-				<View style={styles.sectionHeader}><Text style={styles.sectionTitle}>Income</Text></View>
-				{incomeCategories.map((item) => (
-					<View key={item.id} style={styles.categoryItem}>
-						<Text style={styles.categoryName}>{item.name}</Text>
-						<Text style={styles.categoryAmount}>${item.amount.toFixed(2)}</Text>
-					</View>
-				))}
+		<>
+			<SafeAreaView edges={['top']} style={styles.headerContainer}>
+				<Text style={styles.header}>{getMonthYear()}</Text>
+			</SafeAreaView>
 
-				<View style={styles.sectionHeader}><Text style={styles.sectionTitle}>Expenses</Text></View>
-				{expenseCategories.map((item) => (
-					<View key={item.id} style={styles.categoryItem}>
-						<Text style={styles.categoryName}>{item.name}</Text>
-						<Text style={styles.categoryAmount}>${item.amount.toFixed(2)}</Text>
-					</View>
-				))}
+			<ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
+				<CategoryList categories={incomeCategories} sectionTitle={'Income'} />
+				<CategoryList categories={expenseCategories} sectionTitle={'Expenses'} />
 			</ScrollView>
-		</View>
+		</>
+
 	);
 };
 const styles = StyleSheet.create({
+	headerContainer: {
+		backgroundColor: Colors.accentPink,
+		alignItems: 'flex-start',
+		paddingHorizontal: 20,
+	},
 	container: {
 	  flex: 1,
 	  backgroundColor: Colors.white,
@@ -74,8 +72,8 @@ const styles = StyleSheet.create({
 	header: {
 		fontSize: 28,
 		fontWeight: 'bold',
-		color: Colors.accentPink,
-		marginBottom: 30,
+		color: Colors.white,
+		marginBottom: 10,
 	},
 	month: {
 	  fontSize: 20,
@@ -93,52 +91,10 @@ const styles = StyleSheet.create({
 	  color: Colors.primary,
 	  marginTop: 4,
 	},
-	categoryList: {
-		alignItems: 'center',
-		paddingBottom: 24,
-	},
 	scrollContainer: {
 		paddingBottom: 20,
 		alignItems: 'center',
-	  },
-	categoryItem: {
-		width: '90%',
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		backgroundColor: '#FFFFFF',
-		borderRadius: 12,
-		paddingVertical: 16,
-		paddingHorizontal: 20,
-		marginBottom: 16,
-		borderColor: '#C1C8CD',
-		borderWidth: 1,
-		shadowColor: '#000',
-		shadowOffset: { width: 0, height: 2 },
-		shadowOpacity: 0.1,
-		shadowRadius: 4,
-		elevation: 2,
 	},
-	categoryName: {
-		fontSize: 16,
-		color: '#1A1A40',
-		fontWeight: '500',
-	},
-	categoryAmount: {
-		fontSize: 16,
-		color: '#1A1A40',
-		fontWeight: '600',
-	},
-	sectionHeader: {
-		marginTop: 16,
-		marginBottom: 16,
-		width: '90%',
-		alignItems: 'flex-start',
-	  },
-	  sectionTitle: {
-		fontSize: 18,
-		fontWeight: '600',
-		color: '#1A1A40',
-	  },
 });
   
 export default Home;
