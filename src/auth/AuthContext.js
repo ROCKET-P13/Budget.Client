@@ -20,10 +20,9 @@ export const AuthProvider = ({ children }) => {
 	const logout = async () => {
 		try {
 			await clearSession();
+			setIsAuthenticated(false);
 		} catch (e) {
 			console.error('Logout failed', e);
-		} finally {
-			setIsAuthenticated(false);
 		}
 	};
 
