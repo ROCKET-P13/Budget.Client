@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import BudgetSummary from '../components/BudgetSummary';
 import CategoryList from '../components/CategoryList';
 import { Colors } from '../theme';
 
@@ -42,13 +43,17 @@ const Home = () => {
 
 	const incomeCategories = budget?.categories.filter((cat) => cat.type === 'income') || [];
 	const expenseCategories = budget?.categories.filter((cat) => cat.type === 'expense') || [];
+
 	return (
 		<>
 			<SafeAreaView edges={['top']} style={styles.headerContainer}>
 				<Text style={styles.header}>{getMonthYear()}</Text>
 			</SafeAreaView>
-
+		
 			<ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
+				{budget && (
+					<BudgetSummary budget={budget} />
+				)}
 				<CategoryList categories={incomeCategories} sectionTitle={'Income'} />
 				<CategoryList categories={expenseCategories} sectionTitle={'Expenses'} />
 			</ScrollView>
