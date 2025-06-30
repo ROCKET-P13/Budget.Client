@@ -45,17 +45,18 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	title: {
-		fontSize: 24,
+		fontSize: 28,
 		color: Colors.textPrimary,
 		fontWeight: '600',
 		marginTop: 16,
+		marginBottom: 12,
 	},
 	subtitle: {
-		fontSize: 14,
+		fontSize: 16,
 		color: Colors.textSecondary,
 	},
 	button: {
-		backgroundColor: Colors.primary,
+		backgroundColor: Colors.accentPink,
 		borderRadius: 12,
 		paddingVertical: 12,
 		alignItems: 'center',
@@ -65,6 +66,6 @@ const styles = StyleSheet.create({
 	buttonText: {
 		color: Colors.white,
 		fontSize: 16,
-		fontWeight: '600',
+		fontWeight: 'bold',
 	},
 });
